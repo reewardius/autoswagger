@@ -1,0 +1,12 @@
+pandas
+prance
+rich
+requests
+urllib3
+beautifulsoup4
+colorama
+dicttoxml
+tabulate
+tqdm
+presidio-analyzer
+pyyaml

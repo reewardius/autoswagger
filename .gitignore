@@ -1,0 +1,13 @@
+*-run
+logs/*
+*.cfg
+*-dev*
+testing*/
+venv/*
+venv
+env/*
+env
+*.log
+*.old
+*.swp
+*.zip
