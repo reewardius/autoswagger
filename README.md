@@ -1,4 +1,8 @@
 # Autoswagger by [Intruder](https://intruder.io/)
+<a href="https://intruder.io/">
+  <img alt="autoswagger" src="https://github.com/user-attachments/assets/bb9e8065-efec-47d0-9264-5163a68971cd" />
+</a>
+
 
 Autoswagger is a command-line tool designed to discover, parse, and test **unauthenticated endpoints** via **Swagger/OpenAPI** documentation. It helps identify potential security issues in unprotected endpoints of APIs, such as PII leaks and common secret exposures.
 
