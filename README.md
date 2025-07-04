@@ -55,8 +55,7 @@ Autoswagger automates the process of finding **OpenAPI/Swagger** specifications,
 
 1. **Clone** or **download** the repository containing Autoswagger.
    ```bash
-   ###TODO, UPDATE TO NEW LOCN###
-   $ git clone git@gitlab.intruder.io:security-team/autoswagger.git
+   $ git clone git@github.com:intruder-io/autoswagger.git
    ```
 
 
