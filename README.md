@@ -1,6 +1,6 @@
 # Autoswagger by [Intruder](https://intruder.io/)
 <a href="https://intruder.io/">
-  <img alt="autoswagger" src="https://github.com/user-attachments/assets/bb9e8065-efec-47d0-9264-5163a68971cd" />
+  <img width="966" alt="output" src="https://github.com/user-attachments/assets/e502abaf-426c-4fab-ad60-d7b5dcd730d8" />
 </a>
 
 
