@@ -192,6 +192,14 @@ By default, output is shown in a table.
 
 ---
 
+## Interpreting Results
+
+For most use cases, interpreting results involves looking at the output (endpoints resulting in Status Code 200s), and paying particular attention to endpoints which are marked as 'PII or Secret Detected'. These endpoints are the ones that contain impactful exposures, but they should be manually checked to confirm. You may also wish to look at other 200s that do not contain PII, and determine whether it's intended for these endpoints to be public or not.
+
+Simple GET endpoints can be triaged using command line tools like curl, but we would recommend using your usual API testing suite (tools such as Postman or Burp Suite) to replay requests and read responses to confirm whether an exposure is present.
+
+---
+
 ## Stats & Reporting
 
 - `-stats` appends or prints overall statistics, such as:
