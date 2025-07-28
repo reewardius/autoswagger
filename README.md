@@ -60,7 +60,7 @@ Autoswagger automates the process of finding **OpenAPI/Swagger** specifications,
 
 1. **Clone** or **download** the repository containing Autoswagger.
    ```bash
-   $ git clone git@github.com:intruder-io/autoswagger.git
+   git clone git@github.com:intruder-io/autoswagger.git
    ```
 
 
@@ -73,7 +73,7 @@ Autoswagger automates the process of finding **OpenAPI/Swagger** specifications,
 
 3. **Check installation, show help:**
   ```bash
-  $ python3 autoswagger.py -h
+  python3 autoswagger.py -h
   ```
 
 
