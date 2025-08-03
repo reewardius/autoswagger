@@ -7,6 +7,7 @@ WORKDIR /app
 COPY requirements.txt autoswagger.py ./
 
 # Install Python packages and SpaCy model, then cleanup
+RUN pip install --no-cache-dir --upgrade pip 
 RUN pip install --no-cache-dir -r requirements.txt && \
     python -m spacy download en_core_web_lg && \
     rm -rf ~/.cache/pip
