@@ -1399,7 +1399,7 @@ def main(urls, verbose, include_risk, include_all, product_mode, stats_flag, rat
                 table.add_column("URL", style="magenta", overflow="fold")
                 table.add_column("Status Code", style="green")
                 table.add_column("Content Length", style="yellow")
-                table.add_column("PII Detected", style="red")
+                table.add_column("PII or Secret Detected", style="red")
                 if include_risk:
                     table.add_column("Body", style="blue", overflow="fold")
 

@@ -1,11 +1,11 @@
-# Autoswagger by [Intruder](https://intruder.io/)
+# [Autoswagger](https://www.intruder.io/research/broken-authorization-apis-autoswagger) by [Intruder](https://intruder.io/)
 <a href="https://intruder.io/">
   <img width="966" alt="output" src="https://github.com/user-attachments/assets/e502abaf-426c-4fab-ad60-d7b5dcd730d8" />
 </a>
 <br>  
 <br>  
 
-**Autoswagger** is a command-line tool designed to discover, parse, and test for unauthenticated endpoints using **Swagger/OpenAPI** documentation. It helps identify potential security issues in unprotected endpoints of APIs, such as PII leaks and common secret exposures.
+**[Autoswagger](https://www.intruder.io/research/broken-authorization-apis-autoswagger)** is a command-line tool designed to discover, parse, and test for unauthenticated endpoints using **Swagger/OpenAPI** documentation. It helps identify potential security issues in unprotected endpoints of APIs, such as PII leaks and common secret exposures.
 
 **Please note that this initial release of Autoswagger is by no means complete, and there are some types of specification which the tool does not currently handle. Please feel free to use it as you wish, and extend its detection capabilities or add detection regexes to cover your specific use-case!**
 
@@ -60,7 +60,7 @@ Autoswagger automates the process of finding **OpenAPI/Swagger** specifications,
 
 1. **Clone** or **download** the repository containing Autoswagger.
    ```bash
-   $ git clone git@github.com:intruder-io/autoswagger.git
+   git clone git@github.com:intruder-io/autoswagger.git
    ```
 
 
@@ -73,7 +73,7 @@ Autoswagger automates the process of finding **OpenAPI/Swagger** specifications,
 
 3. **Check installation, show help:**
   ```bash
-  $ python3 autoswagger.py -h
+  python3 autoswagger.py -h
   ```
 
 
@@ -189,6 +189,14 @@ By default, output is shown in a table.
 
 - `-json` produces JSON objects, grouping results by endpoint.
 - `-product` filters down to only “interesting” endpoints (PII, large responses and responses with secrets).
+
+---
+
+## Interpreting Results
+
+For most use cases, interpreting results involves looking at the output (endpoints resulting in Status Code 200s), and paying particular attention to endpoints which are marked as 'PII or Secret Detected'. These endpoints are the ones that contain impactful exposures, but they should be manually checked to confirm. You may also wish to look at other 200s that do not contain PII, and determine whether it's intended for these endpoints to be public or not.
+
+Simple GET endpoints can be triaged using command line tools like curl, but we would recommend using your usual API testing suite (tools such as Postman or Burp Suite) to replay requests and read responses to confirm whether an exposure is present.
 
 ---
 

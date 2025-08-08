@@ -1,20 +1,18 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.13-slim
 
-# Set the working directory in the container
+# Set workdir early
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy just what's needed
+COPY requirements.txt autoswagger.py ./
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir Flask Flask-RESTful flasgger
+# Install Python packages and SpaCy model, then cleanup
+RUN pip install --no-cache-dir --upgrade pip 
+RUN pip install --no-cache-dir -r requirements.txt && \
+    python -m spacy download en_core_web_lg && \
+    rm -rf ~/.cache/pip
 
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
+# Set entrypoint directly (no chmod needed since invoked via python)
+ENTRYPOINT ["python", "autoswagger.py"]
 
-# Define environment variable
-ENV FLASK_APP=app.py
-
-# Run app.py when the container launches
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["-h"]
