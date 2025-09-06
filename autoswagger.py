@@ -1125,6 +1125,21 @@ def process_input(urls):
         processed.append(url)
     return processed
 
+def read_urls_from_file(file_path):
+    """
+    Reads URLs from a file, one per line, and returns a list of URLs.
+    """
+    try:
+        with open(file_path, 'r') as f:
+            urls = [line.strip() for line in f if line.strip()]
+        return urls
+    except FileNotFoundError:
+        print(f"Error: File {file_path} not found.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error reading file {file_path}: {e}")
+        sys.exit(1)
+
 def main(urls, verbose, include_risk, include_all, product_mode, stats_flag, rate, brute, json_output):
     """
     Main function controlling flow:
@@ -1453,9 +1468,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Autoswagger: Detect unauthenticated access control issues via Swagger/OpenAPI documentation.",
         formatter_class=argparse.RawTextHelpFormatter,
-        epilog="Example usage:\n  python autoswagger.py https://api.example.com -v "
+        epilog="Example usage:\n  python autoswagger.py -urls targets.txt -v "
     )
-    parser.add_argument("urls", nargs="*", help="Base URL(s) or spec URL(s) of the target API(s)")
+    parser.add_argument("-urls", help="File containing target URLs, one per line")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
     parser.add_argument("-risk", action="store_true", help="Include non-GET requests in testing")
     parser.add_argument("-all", action="store_true", help="Include all HTTP status codes in the results, excluding 401 and 403")
@@ -1467,10 +1482,12 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if not args.urls and not sys.stdin.isatty():
+    if args.urls:
+        urls = read_urls_from_file(args.urls)
+    elif not sys.stdin.isatty():
         urls = [line.strip() for line in sys.stdin if line.strip()]
     else:
-        urls = args.urls
+        urls = []
 
     if not urls:
         print_banner()
